@@ -45,6 +45,18 @@ cmake --build --preset Debug
 
 产物在 `build/`，用 Ozone 打开 `build/F103_HomeWork.elf`。
 
+## 打开 Ozone 工程
+
+**用 Ozone 打开本工程根目录下的 `F103_HomeWork.jdebug`**（它已经把
+`File.Open` 指向 `build/F103_HomeWork.elf`）。
+
+> 不要打开别人的/参考工程的 `.jdebug`：那种工程目录里没有自己的 `build/`，
+> Ozone 会报 `Program file not found`；如果对方是在更新版本的 Ozone 里创建的，
+> 还会连带报 `unknown identifier "DataGraph.Add"`（本机 V3.26 不支持），
+> 两个错一起出现。判断方法很简单——看报错里的行号：本工程第 39 行是
+> `File.Open(...)`，没有 DataGraph 调用。
+
+
 ## 目录
 
 ```
