@@ -57,5 +57,11 @@ docs/          附录图片
 
 ## 截图注意
 
-Timeline 里的 `Power` 和 `Code` 要关掉；程序必须在运行状态。
+程序必须在运行状态；Timeline 里的 `Power` 和 `Code` 要关掉。
 CPU 一停，看门狗仍在计数，调试器会掉线。
+
+本机 Ozone 是 **V3.26（2021 版）**，不支持在 `.jdebug` 里用
+`DataGraph.Add("tick")` 自动把 `tick` 加进 Timeline（会报
+`error (83): Script interpretation failure: unknown identifier "DataGraph.Add"`，
+导致整个工程加载失败）。所以 `tick` 需要在 Ozone 里手工加：
+打开 View → Data Graph（或 Timeline），点 `+` 添加变量 `tick`，采样率设 1 kHz。

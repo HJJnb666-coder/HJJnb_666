@@ -37,6 +37,12 @@ void OnProjectLoad (void) {
   // User settings
   //
   File.Open ("$(ProjectDir)/build/F103_HomeWork.elf");
+  //
+  // 注意：不要在这里加 DataGraph.Add("tick") / Edit.SysVar("VAR_HSS_SPEED", 1000)。
+  // 那两行是参考工程在其更新的 Ozone 版本里用的；本机 Ozone V3.26 会报
+  //   error (83): Script interpretation failure: unknown identifier "DataGraph.Add"
+  // 导致整个工程加载失败（Project Load Diagnostics）。
+  // 需要看 tick 曲线时，在 Ozone 里手工加：View → Data Graph / Timeline 添加 tick 即可。
 }
 
 /*********************************************************************
