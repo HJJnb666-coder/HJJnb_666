@@ -2,6 +2,7 @@
 build/
 cmake-build-*/
 _backup_*/
+hjj_01/
 
 # 编译中间文件
 *.o
