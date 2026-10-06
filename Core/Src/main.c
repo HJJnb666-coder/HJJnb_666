@@ -24,8 +24,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "task_led.h"       /* 第 1 题：PC13 板载灯        */
-#include "task_timer.h"     /* 第 2、3 题：1 ms tick + 看门狗 */
+#include "my_task.hpp"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -92,22 +91,12 @@ int main(void)
   MX_TIM2_Init();
   MX_IWDG_Init();
   /* USER CODE BEGIN 2 */
-  Task_Led_Init();        /* 第 1 题：PC13 输出低电平，点亮板载灯 */
-
-  /* 第 2 题：启动 TIM2 的 1 ms 更新中断，回调里 tick++ 并调用 HAL_IWDG_Refresh 喂狗。
-   * 做第 1 题拍灯的照片时，把下面这一行临时注释掉：这时没人喂狗，
-   * 芯片会约 2 秒复位一次（属正常现象）。 */
-  Task_Timer_Init();
-
-  /* 第 3 题：不用改这个文件，只要把 Tasks/src/task_timer.c 里的
-   *         TASK_IWDG_REFRESH 改成 0，重新编译下载即可：
-   *         回调里不再喂狗，tick 会从 0 涨到约 2000 然后归零，不断重复。
-   * 看门狗本身由 CubeMX 生成的 MX_IWDG_Init()（Core/Src/iwdg.c）启动，
-   * 分频 64、Reload 1249，超时约 2 秒，三题都不要关掉它。 */
+  MyTaskInit();
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  /* 作业要求: while(1) 保持为空, 不要在里面对 GPIO 做翻转 */
   while (1)
   {
     /* USER CODE END WHILE */

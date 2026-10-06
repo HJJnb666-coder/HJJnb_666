@@ -4,7 +4,7 @@
 *                         www.segger.com                             *
 **********************************************************************
 
-File          : E:/Google_download/project/hjjnb_666/project.jdebug
+File          : 
 Created       : 6 Oct 2026 19:38
 Ozone Version : V3.26
 */
@@ -22,18 +22,21 @@ void OnProjectLoad (void) {
   //
   // Dialog-generated settings
   //
+  Project.SetDevice ("STM32F103C8");
+  // 调试器：DAPLink（CMSIS-DAP）。若改用 J-Link，Ozone 启动时会自动改写这两行。
+  // DAPLink 序列号可在 F:\DETAILS.TXT 的 Unique ID 里看到。
+  Project.SetHostIF ("CMSIS-DAP", "07000001000000000000000000000000a5a5a5a5a597969908");
+  Project.SetTargetIF ("SWD");
+  // DAPLink 走 CMSIS-DAP，速率不宜过高，1 MHz 足够且更稳。
+  Project.SetTIFSpeed ("1 MHz");
   Project.AddPathSubstitute ("E:/Google_download/project/hjjnb_666", "$(ProjectDir)");
   Project.AddPathSubstitute ("e:/google_download/project/hjjnb_666", "$(ProjectDir)");
-  Project.SetDevice ("STM32F103C8");
-  Project.SetHostIF ("USB", "1040348510");
-  Project.SetTargetIF ("SWD");
-  Project.SetTIFSpeed ("4 MHz");
   Project.AddSvdFile ("$(InstallDir)/Config/CPU/Cortex-M3.svd");
   Project.AddSvdFile ("$(InstallDir)/Config/Peripherals/STM32F103xx.svd");
   //
   // User settings
   //
-  File.Open ("$(ProjectDir)/build/project.elf");
+  File.Open ("$(ProjectDir)/build/F103_HomeWork.elf");
 }
 
 /*********************************************************************

@@ -216,7 +216,7 @@ void TIM2_IRQHandler(void)
 /* USER CODE BEGIN 1 */
 
 /* 说明：TIM2 的中断入口已经由 CubeMX 生成在上面（调用 HAL_TIM_IRQHandler(&htim2)），
- * 它会自动转到 Tasks/src/task_timer.c 里的 HAL_TIM_PeriodElapsedCallback()。
+ * 它会自动转到 Tasks/src/my_task.cpp 里的 HAL_TIM_PeriodElapsedCallback()。
  * 这里不要再写第二份 TIM2_IRQHandler，否则链接会报重复定义。 */
 
 /* USER CODE END 1 */
