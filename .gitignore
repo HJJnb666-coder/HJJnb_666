@@ -1,0 +1,26 @@
+# 构建产物
+build/
+_backup_*/
+hjj_01/
+
+# CMake / Ninja 中间文件
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+.ninja_deps
+.ninja_log
+compile_commands.json
+
+# 编辑器与调试器本地配置
+.vscode/
+*.jdebug.user
+*.jdebug.bak-*
+*.bak
+*.md.bak
+
+# IDE
+.idea/
+*.uvguix.*
+
+# 文档导出的中间产物（保留 .md 源文件）
+~$*.docx
