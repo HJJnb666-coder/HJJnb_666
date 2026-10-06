@@ -71,9 +71,12 @@ void HAL_MspInit(void)
 
   /* System interrupt init*/
 
-  /** DISABLE: JTAG-DP Disabled and SW-DP Disabled
+  /** NOJTAG: JTAG-DP Disabled and SW-DP Enabled
+  *  注意：SYS 的 Debug 必须选 Serial Wire，否则 CubeMX 会生成
+  *        __HAL_AFIO_REMAP_SWJ_DISABLE()，把 SWD 也一起关掉，
+  *        芯片一跑起来调试器就再也连不上（SWD 被锁）。
   */
-  __HAL_AFIO_REMAP_SWJ_DISABLE();
+  __HAL_AFIO_REMAP_SWJ_NOJTAG();
 
   /* USER CODE BEGIN MspInit 1 */
 
